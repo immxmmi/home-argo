@@ -4,7 +4,7 @@ metadata:
   name: keda
   namespace: argocd
 finalizers:
-  - argoproj.io/resources-finalizer
+  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
