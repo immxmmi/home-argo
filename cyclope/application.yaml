@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cyclops
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://cyclops-ui.com/helm
+    chart: cyclops
+    targetRevision: 0.14.5 
+    helm:
+      releaseName: cyclops
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cyclops
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
